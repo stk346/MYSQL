@@ -1,0 +1,9 @@
+-- 프로그래머스_MYSQL_LEVEL4_보호소에서 중성화한 동물
+-- https://programmers.co.kr/learn/courses/30/lessons/59045
+
+SELECT A.ANIMAL_ID, A.ANIMAL_TYPE, A.NAME
+FROM ANIMAL_INS A
+LEFT JOIN ANIMAL_OUTS B
+    ON A.ANIMAL_ID = B.ANIMAL_ID
+WHERE A.SEX_UPON_INTAKE LIKE "%Intact%" AND (B.SEX_UPON_OUTCOME LIKE "%Neutered%" OR B.SEX_UPON_OUTCOME LIKE "%Spayed%")
+ORDER BY A.ANIMAL_ID
